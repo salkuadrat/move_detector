@@ -30,19 +30,19 @@ import 'package:move_detector/move_detector.dart';
 ```dart
 MoveDetector(
   child: ..., // your child widget
-  onStart: (MoveEvent event) {
+  onStart: (MoveDetails details) {
     // do something when pointer on screen starting to move
   },
-  onUpdate: (MoveEvent event) {
+  onUpdate: (MoveDetails details) {
     // do something when pointer on screen is moving
   },
-  onEnd: (MoveEvent event) {
+  onEnd: (MoveDetails details) {
     // do something when pointer on screen stop moving
   },
 )
 ```
 
-And here is the details of each `MoveEvent`.
+And here is the details of each `MoveDetails`.
 
 ```dart
 // Coordinate of the position of the pointer, 
