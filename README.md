@@ -14,7 +14,7 @@ or
 
 ```yaml
 dependencies:
-  move_detector: ^0.0.1
+  move_detector: ^0.0.2
 ```
 
 Then run `flutter pub get`.
@@ -61,4 +61,4 @@ Offset localDelta
 
 ## Example
 
-Check out example project [here](example). You can also try the working application: [MoveDetector.apk](MoveDetector.apk).
+Check out example project [here](example). You can also try the working example app: [move_detector.apk](move_detector.apk).

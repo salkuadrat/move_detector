@@ -18,14 +18,14 @@ class MoveDetector extends StatefulWidget {
   final Widget child;
 
   /// A pointer has contacted the screen and starting to move.
-  final Function(MoveEvent)? onStart;
+  final Function(MoveDetails details)? onStart;
 
   /// A pointer that was previously in contact with the screen and moving
   /// is no longer in contact with the screen.
-  final Function(MoveEvent)? onUpdate;
+  final Function(MoveDetails details)? onUpdate;
 
   /// A pointer that is in contact with the screen has made a move.
-  final Function(MoveEvent)? onEnd;
+  final Function(MoveDetails details)? onEnd;
 
   @override
   _MoveDetectorState createState() => _MoveDetectorState();
@@ -45,7 +45,7 @@ class _MoveDetectorState extends State<MoveDetector> {
     _lastPoint = details.focalPoint;
     _lastLocalPoint = details.localFocalPoint;
 
-    widget.onStart?.call(MoveEvent(
+    widget.onStart?.call(MoveDetails(
       position: details.focalPoint,
       localPosition: details.localFocalPoint,
       delta: delta,
@@ -70,7 +70,7 @@ class _MoveDetectorState extends State<MoveDetector> {
       _lastDelta = delta;
       _lastLocalDelta = delta;
 
-      widget.onUpdate?.call(MoveEvent(
+      widget.onUpdate?.call(MoveDetails(
         position: details.focalPoint,
         localPosition: details.localFocalPoint,
         delta: delta,
@@ -84,7 +84,7 @@ class _MoveDetectorState extends State<MoveDetector> {
         _lastLocalPoint != null &&
         _lastDelta != null &&
         _lastLocalDelta != null) {
-      widget.onEnd?.call(MoveEvent(
+      widget.onEnd?.call(MoveDetails(
         position: _lastPoint!,
         localPosition: _lastLocalPoint!,
         delta: _lastDelta!,
@@ -110,10 +110,10 @@ class _MoveDetectorState extends State<MoveDetector> {
 /// See also:
 ///
 ///  * [MoveDetector.onUpdate], which allows callers to be notified of these
-///    events in a widget tree.
-///  * [MoveDetector.onStart], which allows callers to be notified for the first time this event occurs
-///  * [MoveDetector.onEnd], which allows callers to be notified after the last move event occurs.
-class MoveEvent {
+///    movement in a widget tree.
+///  * [MoveDetector.onStart], which allows callers to be notified for the first time this move occurs
+///  * [MoveDetector.onEnd], which allows callers to be notified after the last move occurs.
+class MoveDetails {
   /// The [position] transformed into the event receiver's local coordinate
   /// system.
   ///
@@ -150,7 +150,7 @@ class MoveEvent {
   ///    coordinate space of the event receiver.
   final Offset delta;
 
-  const MoveEvent(
+  const MoveDetails(
       {required this.localPosition,
       required this.position,
       required this.localDelta,

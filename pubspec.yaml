@@ -1,6 +1,6 @@
 name: move_detector
 description: The easy way to detect touch movements on screen in Flutter.
-version: 0.0.1
+version: 0.0.2
 # author: Salman S
 homepage: https://github.com/salkuadrat/move_detector
 repository: https://github.com/salkuadrat/move_detector

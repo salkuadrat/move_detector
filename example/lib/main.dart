@@ -42,16 +42,16 @@ class _DrawingPageState extends State<DrawingPage> {
         child: Column(
           children: [
             MoveDetector(
-              onStart: (MoveEvent event) {
-                //print(event.localPosition);
-                state.start(event.localPosition);
+              onStart: (MoveDetails details) {
+                //print(details.localPosition);
+                state.start(details.localPosition);
               },
-              onUpdate: (MoveEvent event) {
-                //print(event.localPosition);
-                state.draw(event.localPosition);
+              onUpdate: (MoveDetails details) {
+                //print(details.localPosition);
+                state.draw(details.localPosition);
               },
-              onEnd: (MoveEvent event) {
-                //print(event.localPosition);
+              onEnd: (MoveDetails details) {
+                //print(details.localPosition);
                 state.stop();
               },
               child: Consumer<DrawingState>(
@@ -68,7 +68,7 @@ class _DrawingPageState extends State<DrawingPage> {
             Center(
               child: ElevatedButton(
                 child: Text('Clear Canvas'),
-                onPressed: () => state.clear(),
+                onPressed: state.clear,
               ),
             ),
           ],
